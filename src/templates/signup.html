@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wealthify - Signup</title>
+</head>
+<body>
+    <h1>Signup</h1>
+    <form action="/signup" method="post">
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="{{ email }}" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="checkbox" id="show-password" onclick="togglePassword()"> Show Password<br>
+        <button type="submit">Signup</button>
+    </form>
+    <a href="/login">Already have an account? Login here.</a>
+
+    <div id="error-modal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); padding:20px; border:1px solid #ccc; background-color:white; z-index:1000;">
+        <p id="error-message"></p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        if (error) {
+            const modal = document.getElementById('error-modal');
+            const message = document.getElementById('error-message');
+            message.textContent = error;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('error-modal').style.display = 'none';
+        }
+
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        }
+    </script>
+</body>
+</html>
