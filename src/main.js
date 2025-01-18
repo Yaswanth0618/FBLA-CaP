@@ -52,10 +52,10 @@ app.on('ready', () => {
         webPreferences: {
             nodeIntegration: true,
         },
-        icon: path.join(__dirname, 'assets/img/logo.ico'),
+        icon: path.join(__dirname, 'images/logo.ico'),
     });
 
-    mainWindow.loadURL('index.html');
+    mainWindow.loadURL('http://127.0.0.1:5000/login');
 
     mainWindow.on('closed', () => {
         mainWindow = null;
