@@ -58,6 +58,14 @@ button {
 body {
   background-color: var(--body-color);
   color: var(--text-color);
+  margin-bottom: 0px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensures the body only covers the full height of the viewport */
+    overflow: hidden; /* Prevents scrolling caused by extra space */
 }
 
 input,
@@ -100,7 +108,7 @@ img {
 }
 
 .login__title {
-  font-size: var(--big-font-size);
+  font-size: 25px;
   color: var(--title-color);
   text-align: center;
   margin-bottom: 2rem;
@@ -221,6 +229,7 @@ img {
 .login__switch {
   text-align: center;
   font-size: var(--small-font-size);
+  margin-top: -20px;
 }
 
 .login__switch button {
@@ -332,7 +341,7 @@ img {
   }
   .login__title {
     text-align: initial;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
   .login__button {
     margin-bottom: 3rem;
@@ -349,6 +358,7 @@ img {
   }
   .login__img {
     transform: translate(0rem, 0rem);
+    margin-bottom: 0px;
   }
 }
 

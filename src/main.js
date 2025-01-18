@@ -55,7 +55,7 @@ app.on('ready', () => {
         icon: path.join(__dirname, 'images/logo.ico'),
     });
 
-    mainWindow.loadURL('http://127.0.0.1:5500/src/Index.html');
+    mainWindow.loadURL('http://127.0.0.1:5500/src/templates/Index.html');
 
     mainWindow.on('closed', () => {
         mainWindow = null;
