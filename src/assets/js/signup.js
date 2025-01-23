@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             // Modify the closeModal function to handle the redirection
                             const originalCloseModal = closeModal;
                             closeModal = function () {
-                                originalCloseModal(); // Call the original closeModal to hide the modal
+                                originalCloseModal();
                                 window.location.href = 'index.html'; // Redirect after modal is closed
                             };
                         }).catch((error) => {
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         // Modify the closeModal function to handle the redirection
                         const originalCloseModal = closeModal;
                         closeModal = function () {
-                            originalCloseModal(); // Call the original closeModal to hide the modal
+                            originalCloseModal();
                             window.location.href = 'index.html'; // Redirect after modal is closed
                         };
                     }).catch((error) => {
