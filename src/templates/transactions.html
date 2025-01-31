@@ -77,17 +77,17 @@
     <!-- Search Bar -->
     <!-- Search Bar -->
     <!-- Search Bar -->
-<div id="searchBar">
-    <h2>Search Transactions</h2>
-    <div class="search-container">
-        <select id="searchCriteria" class="search-criteria">
-            <option value="name">Name</option>
-            <option value="type">Type</option>
-            <option value="category">Category</option>
-        </select>
-        <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+    <div id="searchBar">
+        <h2>Search Transactions</h2>
+        <div class="search-container">
+            <select id="searchCriteria" class="search-criteria">
+                <option value="name">Name</option>
+                <option value="type">Type</option>
+                <option value="category">Category</option>
+            </select>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+        </div>
     </div>
-</div>
 
     <!-- Transaction List -->
     <div id="transactionList">
@@ -109,9 +109,32 @@
         </table>
     </div>
 
+    <!-- Custom Modal -->
+    <div id="customModal"
+        style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 1000; transition: opacity 0.3s ease-in-out;">
+        <p id="modalMessage" style="font-size: 16px; margin-bottom: 20px; font-weight: bold; color: black;"></p>
+        <button onclick="closeModal()"
+            style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">OK</button>
+    </div>
+
+    <!-- Overlay for modal -->
+    <div id="modalOverlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;">
+    </div>
+
     <!-- JavaScript Files -->
     <script src="../assets/js/transactions.js" type="module"></script>
     <script src="../assets/js/navbar.js"></script>
+
+    <script>
+        function closeModal() {
+            const modal = document.getElementById('customModal');
+            const modalOverlay = document.getElementById('modalOverlay');
+
+            modal.style.display = 'none';
+            modalOverlay.style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>

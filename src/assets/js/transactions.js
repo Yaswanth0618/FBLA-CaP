@@ -22,7 +22,7 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
     signOut(auth).then(() => {
         window.location.href = 'index.html';
     }).catch((error) => {
-        console.error('Error signing out: ', error);
+        openModal(`Error signing out: ${error.message}`);
     });
 });
 
@@ -120,7 +120,7 @@ addTransactionBtn.addEventListener('click', async (e) => {
 
         // Validate form fields
         if (!name || !type || isNaN(amount) || !category || !date) {
-            alert("Please fill out all fields before submitting.");
+            openModal("Please fill out all fields before submitting.");
             return;
         }
 
@@ -132,7 +132,7 @@ addTransactionBtn.addEventListener('click', async (e) => {
             userId: user.uid,
             name,
             type,
-            amount: adjustedAmount, // Store adjusted amount
+            amount: adjustedAmount,
             category,
             date
         });
@@ -140,6 +140,7 @@ addTransactionBtn.addEventListener('click', async (e) => {
         // Reset form
         addTransactionForm.reset();
         loadTransactions(user.uid);
+        openModal("Transaction added successfully!");
     }
 });
 
@@ -183,7 +184,7 @@ updateTransactionBtn.addEventListener('click', async () => {
 
     // Validate form fields
     if (!name || !type || isNaN(amount) || !category || !date) {
-        alert("Please fill out all fields before updating.");
+        openModal("Please fill out all fields before updating.");
         return;
     }
 
@@ -194,7 +195,7 @@ updateTransactionBtn.addEventListener('click', async () => {
     const updatedTransaction = {
         name,
         type,
-        amount: adjustedAmount, // Store adjusted amount
+        amount: adjustedAmount,
         category,
         date
     };
@@ -210,6 +211,7 @@ updateTransactionBtn.addEventListener('click', async () => {
 
     // Reload transactions
     loadTransactions(auth.currentUser.uid);
+    openModal("Transaction updated successfully!");
 });
 
 // Handle Cancel Edit
@@ -223,13 +225,12 @@ cancelEditBtn.addEventListener('click', () => {
 
 // Delete transaction
 window.deleteTransaction = async (transactionId) => {
-    if (confirm("Are you sure you want to delete this transaction?")) {
         await deleteDoc(doc(db, 'transactions', transactionId));
         const user = auth.currentUser;
         if (user) {
             loadTransactions(user.uid);
+            openModal("Transaction deleted successfully!");
         }
-    }
 };
 
 // Search transactions in real-time
@@ -252,3 +253,22 @@ document.getElementById('searchCriteria').addEventListener('change', () => {
 });
 
 
+// Function to open the modal with a message
+function openModal(message) {
+    const modal = document.getElementById('customModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalMessage = document.getElementById('modalMessage');
+
+    modalMessage.textContent = message;
+    modal.style.display = 'block';
+    modalOverlay.style.display = 'block';
+}
+
+// Function to close the modal
+function closeModal() {
+    const modal = document.getElementById('customModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    modal.style.display = 'none';
+    modalOverlay.style.display = 'none';
+}
