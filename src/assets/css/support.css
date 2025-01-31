@@ -53,11 +53,13 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
     
 }
 
 .faq-question:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
     
 }
 
@@ -131,7 +133,7 @@ h2 {
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 #QAbtn:hover {

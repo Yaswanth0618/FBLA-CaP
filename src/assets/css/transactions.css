@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-bottom: -70px;
+    margin-bottom: -90px;
     margin-top: -70px;
 }
 
@@ -186,4 +186,28 @@ table td button.delete {
 
 table td button:hover {
     opacity: 0.8;
+}
+
+.export-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns the button to the right */
+    margin: 10px 0; /* Adds some margin for spacing */
+    margin-right: 20px;
+}
+
+
+#exportBtn {
+    padding: 10px 20px;
+    width: 10%;
+    background-color: rgb(0, 191, 255);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+}
+
+#exportBtn:hover {
+    background-color: rgb(0, 191, 255);
 }

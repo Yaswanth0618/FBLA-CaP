@@ -272,3 +272,42 @@ function closeModal() {
     modal.style.display = 'none';
     modalOverlay.style.display = 'none';
 }
+
+// Add this code to your existing JavaScript file (transactions.js)
+
+// Export Transactions Button
+document.getElementById('exportBtn').addEventListener('click', async () => {
+    const user = auth.currentUser;
+    if (user) {
+        const transactionsRef = collection(db, 'transactions');
+        const q = query(transactionsRef, where('userId', '==', user.uid));
+        const querySnapshot = await getDocs(q);
+
+        // Prepare CSV content
+        let csvContent = "Name,Type,Amount,Category\n"; // CSV header
+
+        querySnapshot.forEach((doc) => {
+            const transaction = doc.data();
+            const row = [
+                transaction.name,
+                transaction.type,
+                `$${transaction.amount.toFixed(2)}`,
+                transaction.category
+            ].join(',');
+            csvContent += row + '\n';
+        });
+
+        // Create a Blob and trigger download
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'transactions.csv');
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        openModal("Transactions exported successfully!");
+    }
+});
