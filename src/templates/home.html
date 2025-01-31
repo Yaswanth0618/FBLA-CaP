@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wealthify - Home</title>
     <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
 </head>
+
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navdiv">
             <div class="logo">
@@ -24,10 +28,37 @@
             </ul>
         </div>
     </nav>
-      
-      
 
-    <script src="../assets/js/navbar.js"></script>
+    <!-- Home Content -->
+    <div class="home-container">
+
+        <!-- Total Balance Display -->
+        <div class="balance-container">
+            <h2>Total Balance: <span id="totalBalance">$0.00</span></h2>
+        </div>
+
+        <!-- Charts -->
+        <!-- Charts Section -->
+        <div class="charts-container">
+            <div class="chart-box">
+                <canvas id="transactionsChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <canvas id="incomeVsExpensesChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <canvas id="categorySpendingChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Import Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- JavaScript Files -->
     <script src="../assets/js/home.js" type="module"></script>
+    <script src="../assets/js/hometemp.js" type="module"></script>
+    <script src="../assets/js/navbar.js"></script>
 </body>
+
 </html>
