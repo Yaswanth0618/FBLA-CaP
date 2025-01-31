@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wealthify - Home</title>
+    <title>Wealthify - Support</title>
     <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/support.css">
 </head>
 <body>
     <nav class="navbar">
@@ -18,16 +19,68 @@
             <ul>
                 <li><a href="home.html">Home</a></li>
                 <li><a href="transactions.html">Transactions</a></li>
-                <li><a href="reports.html">Reports</a></li>
                 <li class="active"><a class="active" href="support.html">Support</a></li>
                 <button id="logoutBtn">Sign Out</button>
             </ul>
         </div>
     </nav>
-    <h1>Welcome!</h1>
-    <p>Support</p>
 
+    <div class="support-container">
+        <h1>Support & FAQ</h1>
 
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+        
+            <div class="faq">
+                <button class="faq-question">How do I add a transaction?</button>
+                <div class="faq-answer">Go to the Transactions page, fill out the form, and click "Add Transaction".</div>
+            </div>
+        
+            <div class="faq">
+                <button class="faq-question">Can I edit a transaction?</button>
+                <div class="faq-answer">Yes, click the "Edit" button next to any transaction in the Transactions page.</div>
+            </div>
+        
+            <div class="faq">
+                <button class="faq-question">How do I delete my account?</button>
+                <div class="faq-answer">Currently, you need to contact support to delete your account. Email: support.wealthify@gmail.com</div>
+            </div>
+        
+            <div class="faq">
+                <button class="faq-question">How can I reset my password?</button>
+                <div class="faq-answer">Click on "Forgot Password" on the login page and follow the instructions to reset your password.</div>
+            </div>
+        
+            <div class="faq">
+                <button class="faq-question">Is my financial data secure?</button>
+                <div class="faq-answer">Yes, Wealthify uses encrypted database storage and Firebase authentication to ensure your data is protected.</div>
+            </div>
+        
+            <div class="faq">
+                <button class="faq-question">Can I categorize my expenses?</button>
+                <div class="faq-answer">Yes! When adding a transaction, select a category (Food, Transport, Entertainment, etc.) to organize your expenses.</div>
+            </div>
+        
+            <div class="faq">
+                <button class="faq-question">Does Wealthify have a mobile app?</button>
+                <div class="faq-answer">Currently, Wealthify is only available as an application, but a mobile app is in development.</div>
+            </div>
+        </div>
+        
+
+        <!-- Chatbot Section -->
+        <div class="chatbot-container">
+            <h2>Ask Our AI Assistant</h2>
+            <div class="chat-box">
+                <div id="chat-messages"></div>
+                <input type="text" id="user-input" placeholder="Ask a question..." onkeypress="handleKeyPress(event)">
+                <button id="QAbtn" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/support.js" type="module"></script>
     <script src="../assets/js/home.js" type="module"></script>
     <script src="../assets/js/navbar.js"></script>
 </body>

@@ -71,9 +71,12 @@ function renderTransactionsChart(transactions) {
             datasets: [{
                 label: 'Transaction Amounts',
                 data: data,
-                backgroundColor: data.map(amount => amount > 0 ? 'green' : 'red'),
-                borderColor: 'black',
-                borderWidth: 1
+                backgroundColor: data.map(amount => amount > 0 ? '#4CAF50' : '#F44336'), // Softer green & red
+                borderColor: 'rgba(0, 0, 0, 0.2)', // Softer border
+                borderWidth: 1,
+                borderRadius: 5, // Rounded edges
+                barPercentage: 0.6, // Adjust bar width
+                categoryPercentage: 0.7 // Adjust spacing
             }]
         },
         options: {
@@ -81,13 +84,51 @@ function renderTransactionsChart(transactions) {
             maintainAspectRatio: false,
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)' // Light gray grid lines
+                    },
+                    ticks: {
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false // Remove vertical grid lines
+                    },
+                    ticks: {
+                        font: {
+                            size: 14
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleFont: {
+                        size: 14
+                    },
+                    bodyFont: {
+                        size: 14
+                    }
                 }
             }
-            
         }
     });
 }
+
 
 // Income vs Expenses Over Time (Line Chart)
 function renderIncomeVsExpensesChart(transactions) {

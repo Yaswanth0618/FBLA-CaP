@@ -1,0 +1,140 @@
+body {
+    background: linear-gradient(to bottom, rgb(235, 235, 235), rgba(179, 178, 178, 0.8));
+    background-attachment: fixed;
+    transition: background 0.5s ease-in-out;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.support-container {
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+    max-width: 1200px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: black;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.faq-section {
+    margin-top: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq {
+    margin-bottom: 15px;
+}
+
+.faq-question {
+    width: 98%;
+    text-align: left;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.faq-question:hover {
+    background-color: #0056b3;
+    
+}
+
+.faq-question::after {
+    content: '⬇';
+    font-size: 1.2rem;
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px;
+    border-left: 4px solid #007bff;
+    background-color: #f9f9f9;
+    text-align: left;
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    animation: fadeIn 0.5s ease-in-out;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.chatbot-container {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+}
+
+#chat-messages {
+    width: 100%;
+    height: 250px;
+    overflow-y: scroll;
+    background: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#user-input {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#QAbtn {
+    padding: 12px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#QAbtn:hover {
+    background-color: #0056b3;
+}
+
