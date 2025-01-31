@@ -174,45 +174,55 @@ window.editTransaction = async (transactionId) => {
 
 // Handle Update Transaction
 updateTransactionBtn.addEventListener('click', async () => {
+    // Ensure there is a transaction being edited
     if (!editingTransactionId) return;
 
+    // Retrieve and trim user input values from form fields
     const name = document.getElementById('name').value.trim();
     const type = document.getElementById('type').value;
     const amount = parseFloat(document.getElementById('amount').value);
     const category = document.getElementById('category').value;
     const date = document.getElementById('date').value;
 
-    // Validate form fields
+    // Validate form fields to ensure all inputs are filled
     if (!name || !type || isNaN(amount) || !category || !date) {
         openModal("Please fill out all fields before updating.");
         return;
     }
 
     // Adjust amount based on transaction type
+    // If it's an 'Income', amount remains positive, otherwise it becomes negative for 'Expense'
     const adjustedAmount = type === 'Income' ? amount : -amount;
 
+    // Reference to the specific transaction document in Firestore
     const transactionRef = doc(db, 'transactions', editingTransactionId);
+
+    // Create an updated transaction object with new values
     const updatedTransaction = {
         name,
         type,
-        amount: adjustedAmount,
+        amount: adjustedAmount, // Ensure expense transactions are stored as negative values
         category,
         date
     };
 
+    // Update the transaction document in Firestore
     await updateDoc(transactionRef, updatedTransaction);
 
-    // Reset form and buttons
-    addTransactionForm.reset();
+    // Reset the form and UI elements after a successful update
+    addTransactionForm.reset(); // Clears the form fields
     editingTransactionId = null;
-    addTransactionBtn.style.display = "inline-block";
+    addTransactionBtn.style.display = "inline-block"; 
     updateTransactionBtn.style.display = "none";
     cancelEditBtn.style.display = "none";
 
-    // Reload transactions
+    // Reload the transactions list to reflect the updated transaction
     loadTransactions(auth.currentUser.uid);
+
+    // Show confirmation message
     openModal("Transaction updated successfully!");
 });
+
 
 // Handle Cancel Edit
 cancelEditBtn.addEventListener('click', () => {
