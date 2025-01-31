@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wealthify - Home</title>
+    <title>Wealthify - Transactions</title>
     <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/transactions.css">
 </head>
+
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navdiv">
             <div class="logo">
@@ -24,11 +28,90 @@
             </ul>
         </div>
     </nav>
-    <h1>Welcome!</h1>
-    <p>Transactions</p>
 
+    <!-- Transactions Section -->
 
-    <script src="../assets/js/home.js" type="module"></script>
+    <!-- Center Container -->
+    <div class="center-container">
+        <!-- Transaction Form -->
+        <div id="transactionForm">
+            <h2 id="formTitle">Add Transaction</h2>
+            <form id="addTransactionForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="type">Type:</label>
+                <select id="type" name="type">
+                    <option value="" selected disabled>Select an option</option>
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+                </select>
+
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="" selected disabled>Select an option</option>
+                    <option value="Food and Drink">Food and Drink</option>
+                    <option value="Health">Health</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Income">Income</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <div class="form-buttons">
+                    <button type="submit" id="addTransactionBtn">Add</button>
+                    <button type="button" id="updateTransactionBtn" style="display: none;">Update</button>
+                    <button type="button" id="cancelEditBtn" style="display: none;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <!-- Search Bar -->
+    <!-- Search Bar -->
+<div id="searchBar">
+    <h2>Search Transactions</h2>
+    <div class="search-container">
+        <select id="searchCriteria" class="search-criteria">
+            <option value="name">Name</option>
+            <option value="type">Type</option>
+            <option value="category">Category</option>
+        </select>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+    </div>
+</div>
+
+    <!-- Transaction List -->
+    <div id="transactionList">
+        <h2>Transaction History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="transactionTableBody">
+                <!-- Transactions will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../assets/js/transactions.js" type="module"></script>
     <script src="../assets/js/navbar.js"></script>
 </body>
+
 </html>
