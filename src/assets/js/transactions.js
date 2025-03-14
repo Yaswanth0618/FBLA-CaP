@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-import { getFirestore, collection, addDoc, getDocs, query, where, deleteDoc, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, where, deleteDoc, doc, updateDoc, getDoc, orderBy } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 // Firebase Config
 const firebaseConfig = {
@@ -38,7 +38,7 @@ onAuthStateChanged(auth, (user) => {
 // Load transactions with search filter
 async function loadTransactions(userId, searchQuery = '', searchCriteria = 'name') {
     const transactionsRef = collection(db, 'transactions');
-    const q = query(transactionsRef, where('userId', '==', userId));
+    const q = query(transactionsRef, where('userId', '==', userId), orderBy('date', 'desc'));
     const querySnapshot = await getDocs(q);
 
     const transactionTableBody = document.getElementById('transactionTableBody');
