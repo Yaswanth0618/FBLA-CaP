@@ -169,6 +169,11 @@ window.editTransaction = async (transactionId) => {
         addTransactionBtn.style.display = "none";
         updateTransactionBtn.style.display = "inline-block";
         cancelEditBtn.style.display = "inline-block";
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Enables smooth scrolling
+        });
     }
 };
 
